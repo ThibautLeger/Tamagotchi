@@ -1,0 +1,165 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>iClock</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    function tamagochi () {
+      var hunger = 100; 
+      var eatInterval = setInterval(function(){
+        gettingHungry();
+        death();
+        feeding ();
+      }, 1000);
+
+      function gettingHungry () {
+        hunger -= 10;
+        document.getElementById("power").firstChild.nodeValue = 'Power: ' + hunger;
+        document.getElementById('nomNom').style.display = "none";
+      }
+
+      function feeding () {
+        var feeding = document.getElementById('screen');
+        feeding.onclick = feed;
+      }
+
+      function feed () {
+        hunger += 20;
+        if (hunger > 150) {
+          document.getElementById('nomNom').style.display = "none";
+        }
+          else {
+            document.getElementById('nomNom').style.display = "block";
+          }
+        
+      }
+
+      function death () {
+        document.getElementById('nomNom').style.display = "none";
+        if (hunger < 50) {
+          document.getElementById('screen').style.background = 'url(img/feed_tamagotchi.gif) no-repeat';
+          document.getElementById('power').style.color = "#ff0000";
+        }
+
+        if (hunger > 50) {
+          document.getElementById('screen').style.background = 'url(img/tamagotchi.gif) no-repeat';
+          document.getElementById('power').style.color = "#333333";
+        }
+
+        if (hunger > 150) {
+          document.getElementById('screen').style.background = 'url(img/fat_tamagotchi.gif) no-repeat';
+          document.getElementById('power').style.color = "#ff0000";
+        }
+
+        if (hunger > 200) {
+          clearInterval(eatInterval);
+          document.getElementById('screen').style.background = 'url(img/dead_fat_tamagotchi.gif) no-repeat';
+          document.getElementById("power").firstChild.nodeValue = "Don't overfeed";
+        }
+
+        if (hunger == 0) {
+          document.getElementById("power").firstChild.nodeValue = 'You let it die';
+          clearInterval(eatInterval);
+          document.getElementById('screen').style.background = 'url(img/dead_tamagotchi.gif) no-repeat';
+        }
+      }
+    }
+    window.onload = tamagochi();
+  </script>
+
+</head>
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<body onload="updateClock(); setInterval('updateClock()', 1000 )">
+
+<div id="wrapper">
+  <h1>Tap the screen <br />to feed the Tamagotchi</h1>
+  <div id="iphone">
+    <div id="side"></div>
+    <div id="lines">
+      <div>
+        <div>
+          <div></div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <div id="toggler">
+      <div></div>
+    </div>
+    <div id="aux"></div>
+    <div id="lightning"></div>
+    <div id="bottom-speaker">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div id="skrews">
+      <div></div>
+      <div></div>
+    </div>
+    <div id="volume">
+      <div></div>
+      <div></div>
+    </div>
+    <div id="front">
+      <div id="front-cover"></div>
+      <div id="camera">
+         <div></div>
+      </div>
+      <div id="speaker"></div>
+      <div id="screen">
+        
+        <div id="circle"></div>
+        <span id="clock">&nbsp;</span>
+        
+        
+        <div id="top"></div>
+
+        <div id="nomNom"></div>
+
+        <div id="power">Power: 100</div>
+        
+        <div id="signal">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div id="battery">
+          <div>86%</div>
+          <div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div id="home">
+        <div></div>
+      </div>
+    </div>
+    <div id="shadow"></div>
+  </div>
+</div>
+
+</body>
+</html>
